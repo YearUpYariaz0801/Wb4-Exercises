@@ -32,4 +32,10 @@ public class Room {
     public boolean isAvailable(){
         return ( !this.isDirty() && !this.isOccupied() );
     }
+
+    public void isCheckedIn;
+    if()
+    public void isCheckedOut;
+    public void isClean;
+
 }

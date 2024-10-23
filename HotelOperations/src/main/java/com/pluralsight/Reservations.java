@@ -2,43 +2,65 @@ package com.pluralsight;
 
 public class Reservations {
 
+
     private String roomType;
 
-    private int numberofNights;
-    private boolean isWeekend;
-
-    public int kingRoomPricePerNight = 139;
-    public int doubleRoomPricePerNight = 124;
+    private int numberOfNights;
+    private boolean weekend;
 
 
-   double weekendKingPerNight = (kingRoomPricePerNight * 1.10 );
-   double weekendDoublePerNight = (doubleRoomPricePerNight * 1.10);
+    public Reservation(String roomType, int numberOfNights, boolean weekend) {
+        this.roomType = roomType;
+        this.numberOfNights = numberOfNights;
+        this.weekend = weekend;
+    }
 
 
+    public String getRoomType() {
+        return roomType;
+    }
 
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
 
-   public Reservation(String roomType, int numberofNights, boolean isWeekend) {
-       this.roomType = roomType;
-       this.numberofNights = numberofNights;
-       this.isWeekend = isWeekend;
-
+    public double getPrice() throws Exception {
+        double price;
+        if(this.getRoomType().equalsIgnoreCase("king")){
+            price = 139;
+        }
+        else if (this.getRoomType().equalsIgnoreCase("double")){
+            price = 129;
+        }
+        else{
+            throw new Exception("Cannot compute price without correct room type (king or double)");
         }
 
-   public String getRoomType(){
-       return this.roomType;
-   }
+        if(this.isWeekend()){
+            price *= 1.1;
+        }
 
-   public void  setRoomType(String roomType) {
-       this.roomType = roomType;
-   }
+        return  price;
+    }
 
-   public int getNumberofNights() {
-       return this.numberofNights;
-   }
+    public int getNumberOfNights() {
+        return numberOfNights;
+    }
 
-   public boolean isWeekend() {
-       return this.isWeekend;
-   }
+    public void setNumberOfNights(int numberOfNights) {
+        this.numberOfNights = numberOfNights;
+    }
 
+    public boolean isWeekend() {
+        return weekend;
+    }
+
+    public void setWeekend(boolean weekend) {
+        this.weekend = weekend;
+    }
+
+    public double getReservationTotal() throws Exception {
+        return this.getPrice() * this.getNumberOfNights();
+    }
 
 }
