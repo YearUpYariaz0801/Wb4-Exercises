@@ -69,7 +69,11 @@ public class Card {
         return this.isFaceUp;
     }
 
-    public void flip(){
-        isFaceUp = isFaceUp;
+    public void flip() {
+        isFaceUp = !isFaceUp;
+
+    }
+    public void DisplayCard(){
+        System.out.println(this.value + " of " + this.suit);
     }
 }

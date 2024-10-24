@@ -28,4 +28,10 @@ public class Hand {
     }
 
 
+    public void DisplayHand() throws Exception {
+        for(Card card : this.cards){
+            card.DisplayCard();
+        }
+        System.out.println("The total is :" + this.getValue());
+    }
 }
